@@ -37,9 +37,15 @@ __Any other command will be rejected by the application.__
 ## Comparison between sequential process and parallel process.
 
 - Matrix-Vector Multiplication
-![](1n.png)
-![](1m.png)
+
+![](./1n.png)
+
+![](./1m.png)
+
 - Trapezoidal Integral
-![](2.png)
+
+![](./2.png)
+
 - Odd Even Sorting
-![](3.png)
+
+![](./3.png)
