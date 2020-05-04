@@ -1,4 +1,4 @@
-// ParallelApp.cpp : This file contains the 'main' function.
+// Assignment_ParallelApp.cpp : This file contains the 'main' function.
 // Program execution begins and ends there.
 //
 
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 		cout << "Running Matrix Vector Multiplication Test...\n";
 		if (argc == 4)
 			testMatrixVectorMul(10000, atoi(argv[2]), atoi(argv[3]));
-		else if (argc == 1)
+		else if (argc == 2)
 			testMatrixVectorMul();
 		else
 			exit(-1);
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 		cout << "Running Trap Integral Test...\n";
 		if (argc == 4)
 			testTrapIntegral(10000, atoi(argv[2]), atoi(argv[3]));
-		else if (argc == 1)
+		else if (argc == 2)
 			testTrapIntegral();
 		else
 			exit(-1);
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 		cout << "Running Odd Even Sorting Test...\n";
 		if (argc == 3)
 			testOddEvenSorting(10000, atoi(argv[2]));
-		else if (argc == 1)
+		else if (argc == 2)
 			testOddEvenSorting();
 		else
 			exit(-1);
@@ -166,3 +166,4 @@ void testOddEvenSorting(int total, int n)
 	cout << "OddEvenSort. [Parallel] Total time: " << elapse_y * 1000 << "ms" << endl;
 	cout << "OddEvenSort. [Parallel] Average time: " << elapse_y * 1000 / total << "ms" << endl;
 }
+
