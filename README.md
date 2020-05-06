@@ -4,31 +4,46 @@ Assignment for Parallel Programming using C++ and OpenMP
 - `Matrix.h` and `Matrix.cpp` conduct Matrix-Vector Multiplication.
 - `Trap.h` and `Trap.cpp` conduct Trapezoidal Integral.
 - `OddEvenSorting.h` and `OddEvenSorting.cpp` conduct Odd Even Sort.
-- `Assignment_ParallelApp.cpp` contains the main function.
+- `ParallelApp.cpp` contains the main function.
 ## Usage
-- compile with g++
+- compile with g++ (*using c++11*)
 ```bash
-g++ -c Matrix.cpp Trap.cpp OddEvenSorting.cpp Assignment_ParallelApp.cpp
+g++ -c Matrix.cpp Trap.cpp OddEvenSorting.cpp ParallelApp.cpp
 ```
 - link with g++
 ```bash
-g++ Matrix.o Trap.o OddEvenSorting.o Assignment_ParallelApp.o -fopenmp -o app
+g++ Matrix.o Trap.o OddEvenSorting.o ParallelApp.o -fopenmp -o app
 ```
 
 - use app
 ```bash
-app 1  # test Matrix-Vector Multiplication
-app 1 $(m) $(n)  # specify the shape (m*n) of the matrix
+# default arguments:
+#     total = 10000
+#     m = 500
+#     n = 500
+./app 1  # test Matrix-Vector Multiplication
+./app 1 $(total)  # specify the total number of tests
+./app 1 $(m) $(n)  # specify the shape (m*n) of the matrix
+./app 1 $(total) $(m) $(n)  # specify the total number of tests, and the shape (m*n) of the matrix
 ```
 
 ```bash
-app 2  # test Trapezoidal Integral
-app 2 $(range) $(n)  # specify the range of the integral interval and the number of trapezoids
+# default arguments:
+#     total = 10000
+#     range = 100
+#     n = 1000000
+./app 2  # test Trapezoidal Integral
+./app 2 $(range) $(n)  # specify the range of the integral interval and the number of trapezoids
+./app 2 $(total) $(range) $(n)  # specify the total number of tests, the range of the integral interval and the number of trapezoids
 ```
 
 ```bash
-app 3  # test Odd Even Sort
-app 3 $(n)  # specify the list length
+# default arguments:
+#     total = 10000
+#     n = 1000
+./app 3  # test Odd Even Sort
+./app 3 $(n)  # specify the list length
+./app 3 $(total) $(n)  # specify the total number of tests and the list length
 ```
 
 __Any other command will be rejected by the application.__
@@ -37,9 +52,11 @@ __Any other command will be rejected by the application.__
 ## Comparison between sequential process and parallel process.
 
 - Matrix-Vector Multiplication
-![](1n.png)
-![](1m.png)
+![](figures/MatrixVectorMul_Speedup.png)
+![](figures/MatrixVectorMul_Efficiency.png)
 - Trapezoidal Integral
-![](2.png)
+![](figures/TrapIntegral_Speedup.png)
+![](figures/TrapIntegral_Efficiency.png)
 - Odd Even Sorting
-![](3.png)
+![](figures/OddEvenSort_Speedup.png)
+![](figures/OddEvenSort_Efficiency.png)

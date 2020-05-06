@@ -1,7 +1,7 @@
 #include "OddEvenSorting.h"
+#include <cstring>
 #include <omp.h>
 using namespace std;
-
 
 OddEvenSorting::OddEvenSorting(int n, bool random)
 {
@@ -24,7 +24,7 @@ OddEvenSorting::OddEvenSorting(int n, bool random)
 	}
 }
 
-OddEvenSorting::OddEvenSorting(OddEvenSorting& other)
+OddEvenSorting::OddEvenSorting(OddEvenSorting &other)
 {
 	val = other.val;
 	n = other.n;
@@ -49,13 +49,14 @@ void OddEvenSorting::sort(int n, bool p)
 
 	if (p)
 	{
-		int* arr = new int[this->n]; 
+		int *arr = new int[this->n];
 		memcpy(arr, val, this->n * sizeof(int));
 
-		for (phase = 0; phase < n; phase++) {
+		for (phase = 0; phase < n; phase++)
+		{
 			if ((phase & 1) == 0)
 			{ /* Even phase */
-#pragma omp parallel for num_threads(4) shared(arr,n) private(i)
+#pragma omp parallel for shared(arr, n) private(i)
 				for (i = 1; i < n; i += 2)
 					if (arr[i - 1] > arr[i])
 					{
@@ -66,7 +67,7 @@ void OddEvenSorting::sort(int n, bool p)
 			}
 			else
 			{ /* Odd phase */
-#pragma omp parallel for num_threads(4) shared(arr,n) private(i)
+#pragma omp parallel for shared(arr, n) private(i)
 				for (i = 1; i < n - 1; i += 2)
 					if (arr[i] > arr[i + 1])
 					{
@@ -124,4 +125,3 @@ bool OddEvenSorting::operator!=(OddEvenSorting other)
 {
 	return !(*this == other);
 }
-

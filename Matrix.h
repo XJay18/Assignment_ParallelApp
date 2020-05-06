@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+extern const int MAX_MATRIX_SIZE;
+
 class Matrix
 {
 private:
@@ -43,10 +45,7 @@ public:
 
 	Matrix mulVec(
 		Matrix other /* in */,
-		bool = true /*
-					true: parallel
-					false: sequential
-					*/
+		bool = true /* the number of process */
 	);
 
 	bool operator==(Matrix);
