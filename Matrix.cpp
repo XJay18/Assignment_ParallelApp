@@ -3,7 +3,7 @@
 #include <omp.h>
 using namespace std;
 
-const int MAX_MATRIX_SIZE = 500000;
+const int MAX_MATRIX_SIZE = 1000000;
 double VALUES[MAX_MATRIX_SIZE];
 
 Matrix::Matrix(string prompt)
