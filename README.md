@@ -1,4 +1,4 @@
-# Assignment_ParallelApp
+# ParallelApp_OMP
 Assignment for Parallel Programming using C++ and OpenMP
 ## Introduction
 - `Matrix.h` and `Matrix.cpp` conduct Matrix-Vector Multiplication.
