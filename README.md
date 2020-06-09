@@ -57,11 +57,19 @@ g++ Matrix.o Trap.o OddEvenSorting.o ParallelApp.o -fopenmp -o app
 ## Comparisons between sequential process and parallel process.
 
 - Matrix-Vector Multiplication
+
 ![](figures/MatrixVectorMul_Speedup.png)
+
 ![](figures/MatrixVectorMul_Efficiency.png)
+
 - Trapezoidal Integral
+
 ![](figures/TrapIntegral_Speedup.png)
+
 ![](figures/TrapIntegral_Efficiency.png)
+
 - Odd Even Sorting
+
 ![](figures/OddEvenSort_Speedup.png)
+
 ![](figures/OddEvenSort_Efficiency.png)
