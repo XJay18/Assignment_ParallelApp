@@ -14,8 +14,11 @@ void testTrapIntegral(int total = 10000, int range = 100, int n = 1000000);
 void testOddEvenSorting(int total = 10000, int n = 1000);
 
 /* Modify 2 lines below if needed */
-int num_cores = 5;  // Specify the number of cores
+const int num_cores = 5;  // Specify the number of cores
 int cores[] = { 1, 2, 4, 6, 8 };  // Specify the sequence of cores to run your test on.
+
+/* Record the elapsed time of running the test */
+double elapse[num_cores];
 
 int main(int argc, char* argv[])
 {
@@ -76,7 +79,6 @@ void testMatrixVectorMul(int total, int m, int n)
 	std::cout << "m: " << m << ", n:" << n << "\n\n";
 
 	double start[num_cores], end[num_cores];
-	double elapse[num_cores] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
 
 	srand(1); // fixed the random seed
 	for (auto i = 0; i < total; i++)
@@ -96,6 +98,7 @@ void testMatrixVectorMul(int total, int m, int n)
 	std::cout << "Mat mul vec. [Serial]\t\tTotal time: " << elapse[0] * 1000 << "ms\t"
 		<< "Average time: " << elapse[0] * 1000 / total << "ms\n\n";
 
+	// start multi-process testing
 	for (auto i = 1; i < num_cores; i++)
 	{
 		srand(1); // fixed the random seed
@@ -134,7 +137,7 @@ void testTrapIntegral(int total, int range, int n)
 	std::cout << "range: " << range << ", #trapezoids: " << n << "\n\n";
 
 	double start[num_cores], end[num_cores];
-	double elapse[num_cores] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
+
 	auto func = [](double x) { return x * x; };
 	Trap trap(func);
 
@@ -156,6 +159,7 @@ void testTrapIntegral(int total, int range, int n)
 	std::cout << "Integral func: x*x. [Serial]\t\tTotal time: " << elapse[0] * 1000 << "ms\t"
 		<< "Average time: " << elapse[0] * 1000 / total << "ms\n\n";
 
+	// start multi-process testing
 	for (auto i = 1; i < num_cores; i++)
 	{
 		srand(1); // fixed the random seed
@@ -194,7 +198,6 @@ void testOddEvenSorting(int total, int n)
 	std::cout << "list length: " << n << "\n\n";
 
 	double start[num_cores], end[num_cores];
-	double elapse[num_cores] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
 
 	srand(1);
 	for (auto i = 0; i < total; i++)
@@ -213,6 +216,7 @@ void testOddEvenSorting(int total, int n)
 	std::cout << "OddEvenSort. [Serial]\t\tTotal time: " << elapse[0] * 1000 << "ms\t"
 		<< "Average time: " << elapse[0] * 1000 / total << "ms\n\n";
 
+	// start multi-process testing
 	for (auto i = 1; i < num_cores; i++)
 	{
 		srand(1); // fixed the random seed
