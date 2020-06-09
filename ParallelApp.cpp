@@ -13,8 +13,9 @@ void testMatrixVectorMul(int total = 10000, int m = 500, int n = 500);
 void testTrapIntegral(int total = 10000, int range = 100, int n = 1000000);
 void testOddEvenSorting(int total = 10000, int n = 1000);
 
-int num_cores = 5;
-int cores[] = { 1, 2, 4, 6, 8 };
+/* Modify 2 lines below if needed */
+int num_cores = 5;  // Specify the number of cores
+int cores[] = { 1, 2, 4, 6, 8 };  // Specify the sequence of cores to run your test on.
 
 int main(int argc, char* argv[])
 {
@@ -74,8 +75,8 @@ void testMatrixVectorMul(int total, int m, int n)
 	std::cout << "Average " << total << " times\n";
 	std::cout << "m: " << m << ", n:" << n << "\n\n";
 
-	double start[5], end[5];
-	double elapse[5] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
+	double start[num_cores], end[num_cores];
+	double elapse[num_cores] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
 
 	srand(1); // fixed the random seed
 	for (auto i = 0; i < total; i++)
@@ -132,8 +133,8 @@ void testTrapIntegral(int total, int range, int n)
 	std::cout << "Average " << total << " times\n";
 	std::cout << "range: " << range << ", #trapezoids: " << n << "\n\n";
 
-	double start[5], end[5];
-	double elapse[5] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
+	double start[num_cores], end[num_cores];
+	double elapse[num_cores] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
 	auto func = [](double x) { return x * x; };
 	Trap trap(func);
 
@@ -191,8 +192,9 @@ void testOddEvenSorting(int total, int n)
 {
 	std::cout << "Average " << total << " times\n";
 	std::cout << "list length: " << n << "\n\n";
-	double start[5], end[5];
-	double elapse[5] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+	double start[num_cores], end[num_cores];
+	double elapse[num_cores] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
 
 	srand(1);
 	for (auto i = 0; i < total; i++)

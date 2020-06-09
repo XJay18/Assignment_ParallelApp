@@ -46,10 +46,15 @@ g++ Matrix.o Trap.o OddEvenSorting.o ParallelApp.o -fopenmp -o app
 ./app 3 $(total) $(n)  # specify the total number of tests and the list length
 ```
 
-__Any other command will be rejected by the application.__
+- __Any other command will be rejected by the application.__
 
+- __By default, the program will run on 1, 2, 4, 6, 8 core(s) successively for each test, if you want to try on more cores, you can modify the code below in__ [ParallelApp.cpp](ParallelApp.cpp).
+    ```c++
+    int num_cores = 5;  // Specify the number of cores
+    int cores[] = { 1, 2, 4, 6, 8 };  // Specify the sequence of cores to run your test on.
+    ```
 
-## Comparison between sequential process and parallel process.
+## Comparisons between sequential process and parallel process.
 
 - Matrix-Vector Multiplication
 ![](figures/MatrixVectorMul_Speedup.png)
